@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/og": "^0.0.17",
+    "lowlight": "^2.6.1",
+    "next": "12.3.1",
+    "react": "^18.0.0-rc.2",
+    "react-dom": "^18.0.0-rc.2"
+  }
+}
