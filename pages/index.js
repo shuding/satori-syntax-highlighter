@@ -45,11 +45,11 @@ btn.addEventListener('click', () => {
         <meta name='twitter:card' content='summary_large_image' />
         <meta
           name='og:image'
-          content='https://satori-syntax-highlighter.vercel.app/api/highlighter'
+          content='https://satori-syntax-highlighter.vercel.app/og.png'
         />
         <meta
           name='twitter:image'
-          content='https://satori-syntax-highlighter.vercel.app/api/highlighter'
+          content='https://satori-syntax-highlighter.vercel.app/og.png'
         />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>

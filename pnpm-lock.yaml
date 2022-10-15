@@ -1,18 +1,20 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@vercel/og': ^0.0.17
   lowlight: ^2.6.1
   next: 12.3.1
   react: ^18.0.0-rc.2
   react-dom: ^18.0.0-rc.2
+  satori: ^0.0.41
+  yoga-wasm-web: ^0.1.2
 
 dependencies:
-  '@vercel/og': 0.0.17
   lowlight: 2.6.1
   next: 12.3.1_xqrmjcw7djhdjiafcwkbhtlswu
   react: 18.0.0-rc.2
   react-dom: 18.0.0-rc.2_react@18.0.0-rc.2
+  satori: 0.0.41
+  yoga-wasm-web: 0.1.2
 
 packages:
 
@@ -137,17 +139,12 @@ packages:
     dev: false
     optional: true
 
-  /@resvg/resvg-wasm/2.0.0-alpha.4:
-    resolution: {integrity: sha512-pWIG9a/x1ky8gXKRhPH1OPKpHFoMN1ISLbJ+O+gPXQHIAKhNd5I28RlWf7q576hAOQA9JZTlo3p/M2uyLzJmmw==}
-    engines: {node: '>= 10'}
-    dev: false
-
   /@shuding/opentype.js/1.4.0-beta.0:
     resolution: {integrity: sha512-3NgmNyH3l/Hv6EvsWJbsvpcpUba6R8IREQ83nH83cyakCw7uM1arZKNfHwv1Wz6jgqrF/j4x5ELvR6PnK9nTcA==}
     engines: {node: '>= 8.0.0'}
     hasBin: true
     dependencies:
-      fflate: 0.7.3
+      fflate: 0.7.4
       string.prototype.codepointat: 0.2.1
     dev: false
 
@@ -171,17 +168,8 @@ packages:
     resolution: {integrity: sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw==}
     dev: false
 
-  /@vercel/og/0.0.17:
-    resolution: {integrity: sha512-HeeMEvW7eSDvtTw/6oUhFGjXedhNYi0MY8MM7Cob5O5fcX01Qa7T7PNFhsik/DWA+jtudsnHhxB1SzPAfixyxw==}
-    engines: {node: '>=16'}
-    dependencies:
-      '@resvg/resvg-wasm': 2.0.0-alpha.4
-      satori: 0.0.39
-      yoga-wasm-web: 0.1.2
-    dev: false
-
-  /camelize/1.0.0:
-    resolution: {integrity: sha512-W2lPwkBkMZwFlPCXhIlYgxu+7gC/NUlCtdK652DAJ1JdgV0sTrvuPFshNPrFa1TY2JOkLhgdeEBplB4ezEa+xg==}
+  /camelize/1.0.1:
+    resolution: {integrity: sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==}
     dev: false
 
   /caniuse-lite/1.0.30001418:
@@ -204,7 +192,7 @@ packages:
   /css-to-react-native/3.0.0:
     resolution: {integrity: sha512-Ro1yETZA813eoyUp2GDBhG2j+YggidUmzO1/v9eYBKR2EHVEniE2MI/NqpTQ954BMpTPZFsGNPm46qFB9dpaPQ==}
     dependencies:
-      camelize: 1.0.0
+      camelize: 1.0.1
       css-color-keywords: 1.0.0
       postcss-value-parser: 4.2.0
     dev: false
@@ -215,8 +203,8 @@ packages:
       format: 0.2.2
     dev: false
 
-  /fflate/0.7.3:
-    resolution: {integrity: sha512-0Zz1jOzJWERhyhsimS54VTqOteCNwRtIlh8isdL0AXLo0g7xNTfTL7oWrkmCnPhZGocKIkWHBistBrrpoNH3aw==}
+  /fflate/0.7.4:
+    resolution: {integrity: sha512-5u2V/CDW15QM1XbbgS+0DfPxVB+jUKhWEKuuFuHncbk3tEEqzmoXL+2KyOFuKGqOnmdIy0/davWF1CkuwtibCw==}
     dev: false
 
   /format/0.2.2:
@@ -333,8 +321,8 @@ packages:
       loose-envify: 1.4.0
     dev: false
 
-  /satori/0.0.39:
-    resolution: {integrity: sha512-wbuh5cIUri2vB1FFHk0Z13ZutBJJWf+sr0SqrObt0Mv7NnsCcrNNVNFI2/faIzYZu+CA2dNfIsNv96raYcQt8A==}
+  /satori/0.0.41:
+    resolution: {integrity: sha512-AOkOxeZeDCrBJc+JZHcpWs5b7CEoLhWR5/RWhBblAZ0yKi1BNzepUzfPHz5JuYcjES2V3yVIlPVdxrumTe+gyA==}
     engines: {node: '>=16'}
     dependencies:
       '@shuding/opentype.js': 1.4.0-beta.0

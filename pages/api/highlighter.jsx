@@ -1,5 +1,10 @@
-import { ImageResponse } from '@vercel/og'
+import satori, { init } from 'satori/wasm'
+import initYoga from 'yoga-wasm-web'
 import { lowlight } from 'lowlight/lib/common'
+
+const getYoga = fetch(new URL('../../vendor/yoga.wasm', import.meta.url)).then(
+  (r) => r.arrayBuffer()
+)
 
 export const config = {
   runtime: 'experimental-edge',
@@ -101,6 +106,10 @@ function transform(node, color, context) {
 
 export default async function handler(req) {
   try {
+    const yogaWasm = await getYoga
+    const yoga = await initYoga(yogaWasm)
+    init(yoga)
+
     const font = await fetch(
       new URL('../../vendor/IBMPlexMono-Text.otf', import.meta.url)
     ).then((res) => res.arrayBuffer())
@@ -149,57 +158,55 @@ btn.addEventListener('click', () => {
       )
     }
 
-    return new ImageResponse(
-      (
+    const svg = await satori(
+      <div
+        style={{
+          background,
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          textAlign: 'left',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          flexWrap: 'nowrap',
+          fontSize,
+          lineHeight: 1.4,
+        }}
+      >
         <div
           style={{
-            background,
-            height: '100%',
-            width: '100%',
+            whiteSpace: 'pre-wrap',
+            color: '#f8f8f2',
+            background: '#23241f',
+            width: '90%',
+            height: '85%',
+            padding: '16px 20px',
+            borderRadius: 15,
+            border: '4px solid rgba(0, 0, 0, 0.1)',
+            boxShadow: '0 5px 20px rgba(0, 0, 0, 0.4)',
             display: 'flex',
-            textAlign: 'left',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            flexWrap: 'nowrap',
-            fontSize,
-            lineHeight: 1.4,
+            flexWrap: 'wrap',
           }}
         >
+          <div style={{ marginBottom: 8, display: 'flex', width: '100%' }}>
+            <Dot />
+            <Dot />
+            <Dot />
+          </div>
           <div
             style={{
-              whiteSpace: 'pre-wrap',
-              color: '#f8f8f2',
-              background: '#23241f',
-              width: '90%',
-              height: '85%',
-              padding: '16px 20px',
-              borderRadius: 15,
-              border: '4px solid rgba(0, 0, 0, 0.1)',
-              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.4)',
+              paddingLeft: 32,
               display: 'flex',
-              flexWrap: 'wrap',
+              width: '100%',
+              height: '100%',
+              overflow: 'hidden',
             }}
           >
-            <div style={{ marginBottom: 8, display: 'flex', width: '100%' }}>
-              <Dot />
-              <Dot />
-              <Dot />
-            </div>
-            <div
-              style={{
-                paddingLeft: 32,
-                display: 'flex',
-                width: '100%',
-                height: '100%',
-                overflow: 'hidden',
-              }}
-            >
-              {jsx}
-            </div>
+            {jsx}
           </div>
         </div>
-      ),
+      </div>,
       {
         width: 700,
         height: 450,
@@ -213,6 +220,12 @@ btn.addEventListener('click', () => {
         ],
       }
     )
+
+    return new Response(svg, {
+      headers: {
+        'Content-Type': 'image/svg+xml',
+      },
+    })
   } catch (e) {
     console.error(e)
     return new Response('Failed to generate the image: ' + e.message, {
