@@ -2,9 +2,9 @@ import satori, { init } from 'satori/wasm'
 import initYoga from 'yoga-wasm-web'
 import { lowlight } from 'lowlight/lib/common'
 
-const getYoga = fetch(new URL('../../vendor/yoga.wasm', import.meta.url)).then(
-  (r) => r.arrayBuffer()
-)
+import yoga_wasm from '../../vendor/yoga.wasm?module'
+
+const getYoga = initYoga(yoga_wasm)
 
 export const config = {
   runtime: 'experimental-edge',
@@ -106,8 +106,7 @@ function transform(node, color, context) {
 
 export default async function handler(req) {
   try {
-    const yogaWasm = await getYoga
-    const yoga = await initYoga(yogaWasm)
+    const yoga = await getYoga
     init(yoga)
 
     const font = await fetch(
